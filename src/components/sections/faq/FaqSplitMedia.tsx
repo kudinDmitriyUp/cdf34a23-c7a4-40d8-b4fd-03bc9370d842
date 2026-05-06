@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
@@ -32,6 +32,23 @@ const FaqSplitMedia = ({
   videoSrc,
 }: FaqSplitMediaProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [borderColor, setBorderColor] = useState<string>("");
+
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      setBorderColor(getRandomColor());
+    }
+  }, [activeIndex]);
 
   const handleToggle = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -72,7 +89,11 @@ const FaqSplitMedia = ({
             <ImageOrVideo
               imageSrc={imageSrc}
               videoSrc={videoSrc}
-              className="absolute inset-0 size-full object-cover"
+              className={cls(
+                "absolute inset-0 size-full object-cover transition-all duration-300",
+                activeIndex !== null && "border-4"
+              )}
+              style={{ borderColor: activeIndex !== null ? borderColor : "transparent" }}
             />
           </ScrollReveal>
 
@@ -81,6 +102,8 @@ const FaqSplitMedia = ({
               <div
                 key={index}
                 onClick={() => handleToggle(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
                 className="p-3 2xl:p-4 rounded secondary-button cursor-pointer select-none"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -89,14 +112,14 @@ const FaqSplitMedia = ({
                     <Plus
                       className={cls(
                         "size-3.5 md:size-4 text-primary-cta-text transition-transform duration-300",
-                        activeIndex === index && "rotate-45"
+                        (activeIndex === index || hoveredIndex === index) && "rotate-45"
                       )}
                       strokeWidth={2}
                     />
                   </div>
                 </div>
                 <AnimatePresence initial={false}>
-                  {activeIndex === index && (
+                  {(activeIndex === index || hoveredIndex === index) && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
