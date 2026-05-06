@@ -29,10 +29,10 @@ const TestimonialRatingCards = ({
   testimonials: Testimonial[];
 }) => {
   return (
-    <section aria-label="Testimonials section" className="py-20">
+    <section aria-label="Testimonials section" className="py-20 bg-gradient-to-br from-black to-red-900 text-white">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center gap-2 w-content-width mx-auto">
-          <span className="px-3 py-1 mb-1 text-sm card rounded">{tag}</span>
+          <span className="px-3 py-1 mb-1 text-sm card rounded bg-white/10 text-white">{tag}</span>
 
           <TextAnimation
             text={title}
@@ -61,7 +61,7 @@ const TestimonialRatingCards = ({
         <ScrollReveal variant="fade-blur">
           <GridOrCarousel>
             {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="flex flex-col justify-between gap-3 xl:gap-4 2xl:gap-5 h-full p-3 xl:p-4 2xl:p-5 rounded card">
+              <div key={testimonial.name} className="flex flex-col justify-between gap-3 xl:gap-4 2xl:gap-5 h-full p-3 xl:p-4 2xl:p-5 rounded card bg-white/5">
                 <div className="flex flex-col items-start gap-3 xl:gap-4 2xl:gap-5">
                   <div className="flex gap-1">
                     {Array.from({ length: 5 }).map((_, index) => (
