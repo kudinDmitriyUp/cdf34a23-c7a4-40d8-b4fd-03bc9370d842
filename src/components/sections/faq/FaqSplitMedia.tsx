@@ -45,6 +45,10 @@ const FaqSplitMedia = ({
   };
 
   useEffect(() => {
+"use client";
+
+import { motion } from "framer-motion";
+
     if (activeIndex !== null) {
       setBorderColor(getRandomColor());
     }
