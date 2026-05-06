@@ -16,7 +16,7 @@ const ContactCta = ({
   return (
     <section aria-label="Contact section" className="py-20 relative">
       <video
-        src="https://videos.pexels.com/video-files/853875/853875-hd_1920_1080_25fps.mp4"
+        src="https://storage.googleapis.com/webild/default/templates/skincare-luxury/influencer-amara.mp4"
         autoPlay
         loop
         muted
