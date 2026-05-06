@@ -45,7 +45,9 @@ const FaqSplitMedia = ({
   };
 
   useEffect(() => {
-    if (activeIndex !== null) {
+    "use client";
+
+if (activeIndex !== null) {
       setBorderColor(getRandomColor());
     }
   }, [activeIndex]);
