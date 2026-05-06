@@ -1,6 +1,6 @@
 import FooterSimple from '@/components/sections/footer/FooterSimple';
 import NavbarDropdown from '@/components/ui/NavbarDropdown';
-import SiteBackgroundSlot from "@/components/ui/SiteBackgroundSlot";
+
 import { Outlet } from 'react-router-dom';
 import { StyleProvider } from "@/components/ui/StyleProvider";
 
@@ -37,8 +37,8 @@ export default function Layout() {
 ];
 
   return (
-    <StyleProvider buttonVariant="default" siteBackground="gridDots" heroBackground="gradientBars">
-      <SiteBackgroundSlot />
+    <StyleProvider buttonVariant="default">
+      
       <NavbarDropdown
       ctaButton={{
         text: "Order Now",
@@ -46,7 +46,7 @@ export default function Layout() {
       }}
       logo="Retro Coffee"
      navItems={navItems} />
-      <main className="flex-grow">
+      <main className="flex-grow bg-gradient-to-b from-black to-[#f6f0e9]">
         <Outlet />
       </main>
       <FooterSimple
