@@ -14,15 +14,7 @@ const ContactCta = ({
   secondaryButton: { text: string; href: string };
 }) => {
   return (
-    <section aria-label="Contact section" className="py-20 relative">
-      <video
-        src="https://storage.googleapis.com/webild/default/templates/skincare-luxury/influencer-amara.mp4"
-        autoPlay
-        loop
-        muted
-        className="absolute inset-0 w-full h-full object-cover -z-10"
-      />
-      <div className="absolute inset-0 w-full h-full bg-black/50 -z-10" />
+    <section aria-label="Contact section" className="py-20">
       <div className="w-content-width mx-auto">
         <ScrollReveal variant="fade-blur" className="flex items-center justify-center py-20 px-5 md:px-10 card rounded">
           <div className="w-full md:w-3/4 flex flex-col items-center gap-3">
