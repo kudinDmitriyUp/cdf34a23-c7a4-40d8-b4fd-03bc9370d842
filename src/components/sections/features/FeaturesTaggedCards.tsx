@@ -61,8 +61,8 @@ const FeaturesTaggedCards = ({
 
         <ScrollReveal variant="slide-up">
           <GridOrCarousel>
-            {items.map((item) => (
-              <div key={item.title} className="flex flex-col gap-5 h-full group">
+            {items.map((item, index) => (
+              <div key={item.title} className={`flex flex-col gap-5 h-full group ${index === 1 ? 'md:scale-110' : ''}`}>
                 <div className="relative aspect-square rounded overflow-hidden">
                   <ImageOrVideo imageSrc={item.imageSrc} videoSrc={item.videoSrc} className="transition-transform duration-500 ease-in-out group-hover:scale-105" />
                   <span className="absolute top-5 right-5 px-3 py-1 mb-1 text-sm card rounded">{item.tag}</span>
